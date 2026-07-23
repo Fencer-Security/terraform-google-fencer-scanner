@@ -28,6 +28,27 @@ output "service_account_key" {
 
 After `terraform apply`, upload the decoded JSON key into the GCP connection form in Fencer.
 
+### Use from Pulumi
+
+Pulumi consumes this module directly — no rewrite. Add it to your project, then instantiate the generated
+`Module` component (works in TypeScript, Python, Go, or YAML):
+
+```bash
+pulumi package add terraform-module Fencer-Security/fencer-scanner/google 1.0.0 fencerscanner
+```
+
+```ts
+import * as fencerscanner from "@pulumi/fencerscanner";
+
+const scanner = new fencerscanner.Module("fencer-scanner", {
+  project_id: "my-project-id",
+});
+
+export const serviceAccountKey = scanner.service_account_key;
+```
+
+Inputs and outputs mirror the module's variables/outputs documented below.
+
 ### What gets created
 
 - The Google APIs the scanner needs, enabled on the project (`iam`, `cloudasset`, `cloudresourcemanager`,
