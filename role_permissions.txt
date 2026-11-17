@@ -96,6 +96,9 @@ dataproc.clusters.getIamPolicy
 dataproc.clusters.list
 datastore.databases.list
 deploymentmanager.deployments.list
+dialogflow.agents.get
+dialogflow.tools.list
+dialogflow.webhooks.list
 dns.managedZones.list
 dns.policies.list
 dns.resourceRecordSets.list
